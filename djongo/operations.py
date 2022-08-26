@@ -58,7 +58,7 @@ class DatabaseOperations(BaseDatabaseOperations):
 
         return datetime.datetime(1900, 1, 1, value.hour, value.minute,
                                  value.second, value.microsecond)
-    
+
     def adapt_decimalfield_value(self, value, max_digits=None, decimal_places=None):
         if value is None:
             return None
@@ -118,3 +118,6 @@ class DatabaseOperations(BaseDatabaseOperations):
 
     def date_trunc_sql(self, lookup_type, field_name):
         return "DATE_TRUNC('%s', %s)" % (lookup_type, field_name)
+
+    def conditional_expression_supported_in_where_clause(self, expression):
+        return False
